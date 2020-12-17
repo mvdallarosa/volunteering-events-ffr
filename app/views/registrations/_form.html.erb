@@ -1,0 +1,6 @@
+<%= simple_form_for(@project, @event, @registration) do |f| %>
+  <%= f.input :note %>
+  <%= f.input :car, as: :boolean %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit class: "btn btn-outline-success"%>
+<% end %>
