@@ -7,14 +7,18 @@ class EventsController < ApplicationController
   end
 
   def new
+    @project = Project.find(params[:project_id])
     @event = Event.new
   end
 
   def create
     @event = Event.new(event_params)
     @event.project = @project
-    @event.save
-    redirect_to project_events_path
+    if @event.save
+      redirect_to project_events_path
+    else
+      render :new
+    end
   end
 
   def edit

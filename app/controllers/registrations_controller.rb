@@ -8,7 +8,7 @@ class RegistrationsController < ApplicationController
     @registration.user = current_user
     @registration.event = @event
     @registration.save
-    redirect_to project_registrations_path
+    redirect_to project_events_path
   end
 
   def edit
