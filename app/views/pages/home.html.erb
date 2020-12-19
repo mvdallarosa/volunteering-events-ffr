@@ -1,4 +1,9 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<%= link_to 'new project', new_project_path  %>
+
+<% @events.each do |event| %>
+  <p> <%= event.date %> - <%= event.project.name %> <%= link_to '-->', project_event_path(event.project, event), class: 'btn-primary' %></p>
+<% end %>
+
+<%= link_to 'NEW PROJECT', new_project_path, class: ' btn btn-outline-primary'  %>

@@ -1,0 +1,8 @@
+<h1>Pages#registrations</h1>
+<p>Find me in app/views/pages/registrations.html.erb</p>
+
+<ul>
+  <% @registrations.each do |registration| %>
+    <li> <%= registration.event.project.name %> - <%= registration.event.date %> - <%= registration.event.location %></li>
+  <% end %>
+</ul>

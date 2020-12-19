@@ -1,6 +1,9 @@
 <h1>Events#show</h1>
 <p>Find me in app/views/events/show.html.erb</p>
 
-<%= @event %>
+<ul>
+  <li><%= @event.date.day %> / <%= @event.date.month %> / <%= @event.date.year %></li>
+  <li><%= @event.location %></li>
+</ul>
 
-<%= link_to 'register for event', new_project_event_registration_path  %>
+<%= link_to 'REGISTER', new_project_event_registration_path(@project, @event), class: "btn btn-outline-primary"   %>

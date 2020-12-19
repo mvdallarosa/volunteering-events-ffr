@@ -1,9 +1,12 @@
 class EventsController < ApplicationController
   def index
+    set_project
     @events = Event.all
   end
 
   def show
+    find_event
+    set_project
   end
 
   def new
@@ -12,10 +15,11 @@ class EventsController < ApplicationController
   end
 
   def create
+    set_project
     @event = Event.new(event_params)
     @event.project = @project
     if @event.save
-      redirect_to project_events_path
+      redirect_to project_events_path(@project)
     else
       render :new
     end

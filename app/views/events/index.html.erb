@@ -2,5 +2,5 @@
 <p>Find me in app/views/events/index.html.erb</p>
 
 <% @events.each do |event| %>
-  <%= link_to event, project_event_path(event) %>
+  <p> <%= link_to event.date, project_event_path(@project, event) %> </p>
 <% end %>

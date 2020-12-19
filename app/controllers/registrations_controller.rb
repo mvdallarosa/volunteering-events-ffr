@@ -1,14 +1,21 @@
 class RegistrationsController < ApplicationController
   def new
+    set_project
+    set_event
     @registration = Registration.new
   end
 
   def create
+    set_project
+    set_event
     @registration = Registration.new(registration_params)
     @registration.user = current_user
     @registration.event = @event
-    @registration.save
-    redirect_to project_events_path
+    if @registration.save
+      redirect_to user_registrations_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -28,6 +35,10 @@ class RegistrationsController < ApplicationController
 
   def registration_params
     params.require(:registration).permit(:note, :car)
+  end
+
+  def set_project
+    @project = Project.find(params[:project_id])
   end
 
   def set_event
