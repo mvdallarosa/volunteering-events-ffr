@@ -6,4 +6,8 @@
   <li><%= @event.location %></li>
 </ul>
 
+<%= link_to edit_project_event_path(@project, @event) do %><i class="far fa-edit"></i><% end %> | <%= link_to project_event_path(@project, @event), method: :delete, data: { confirm: "Are you sure you would like to delete?" } do %><i class="far fa-trash-alt"></i><% end %>
+<br>
+<br>
+
 <%= link_to 'REGISTER', new_project_event_registration_path(@project, @event), class: "btn btn-outline-primary"   %>

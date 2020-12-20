@@ -3,6 +3,6 @@
 
 <ul>
   <% @registrations.each do |registration| %>
-    <li> <%= registration.event.project.name %> - <%= registration.event.date %> - <%= registration.event.location %></li>
+    <li> <%= registration.event.project.name %> - <%= registration.event.date %> - <%= registration.event.location %> - <%= link_to project_event_registration_path(registration.event.project, registration.event, registration), method: :delete, data: { confirm: "Are you sure you would like to delete?" } do %><i class="far fa-trash-alt"></i><% end %></li>
   <% end %>
 </ul>

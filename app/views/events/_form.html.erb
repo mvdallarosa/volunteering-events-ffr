@@ -1,4 +1,4 @@
-<%= simple_form_for [ @project, @event ], url: project_events_path(@project) do |f| %>
+<%= simple_form_for [ @project, @event ] do |f| %>
   <%= f.input :date, input_html: {class: "datepicker"} %>
   <%= f.input :location %>
   <%= f.input :capacity, input_html: { type: 'number' } %>

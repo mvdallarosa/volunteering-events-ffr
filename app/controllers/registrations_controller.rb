@@ -1,13 +1,13 @@
 class RegistrationsController < ApplicationController
+  before_action :find_registration, only: [ :edit, :update, :destroy ]
+  before_action :set_project
+  before_action :set_event
+
   def new
-    set_project
-    set_event
     @registration = Registration.new
   end
 
   def create
-    set_project
-    set_event
     @registration = Registration.new(registration_params)
     @registration.user = current_user
     @registration.event = @event
@@ -23,12 +23,12 @@ class RegistrationsController < ApplicationController
 
   def update
     @registration.update(registration_params)
-    redirect_to project_event_path(@event)
+    redirect_to project_event_path(@project, @event)
   end
 
   def destroy
     @registration.destroy
-    redirect_to project_event_path(@event)
+    redirect_to user_registrations_path
   end
 
   private

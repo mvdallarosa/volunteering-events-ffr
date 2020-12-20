@@ -4,3 +4,5 @@
 <% @events.each do |event| %>
   <p> <%= link_to event.date, project_event_path(@project, event) %> </p>
 <% end %>
+
+<%= link_to 'NEW EVENT', projects_path, class: "btn btn-outline-primary" %>

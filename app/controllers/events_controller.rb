@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
+  before_action :find_event, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_project
+
   def index
-    set_project
     @events = Event.all
   end
 
   def show
-    find_event
-    set_project
   end
 
   def new
@@ -15,7 +15,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    set_project
     @event = Event.new(event_params)
     @event.project = @project
     if @event.save
@@ -30,12 +29,12 @@ class EventsController < ApplicationController
 
   def update
     @event.update(event_params)
-    redirect_to project_events_path
+    redirect_to project_events_path(@project)
   end
 
   def destroy
     @event.destroy
-    redirect_to project_events_path
+    redirect_to project_events_path(@project)
   end
 
   private
