@@ -1,8 +1,28 @@
-<h1>Pages#registrations</h1>
-<p>Find me in app/views/pages/registrations.html.erb</p>
-
-<ul>
-  <% @registrations.each do |registration| %>
-    <li> <%= registration.event.project.name %> - <%= registration.event.date %> - <%= registration.event.location %> - <%= link_to project_event_registration_path(registration.event.project, registration.event, registration), method: :delete, data: { confirm: "Are you sure you would like to delete?" } do %><i class="far fa-trash-alt"></i><% end %></li>
-  <% end %>
-</ul>
+<div class="container mt-5">
+  <h1 class="page-title">Eventi a cui parteciperò</h1>
+  <div class="grid-container">
+    <% @registrations.each do |registration| %>
+    <div class="card registrations-card">
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="flex-grow-1">
+            <h4 class="card-title"><%= registration.event.date.strftime("%^a, %e %^b") %></h4>
+            <p><i class="fas fa-clock"></i> <%= registration.event.date.strftime("%H:%M") %></p>
+            <p><i class="fas fa-map-marker-alt"></i> Milano</p>
+          </div>
+          <div class="btn-container">
+          <%= link_to project_event_registration_path(registration.event.project, registration.event, registration), method: :delete, data: { confirm: "Sei sicuro di non voler più partecipare?" } do %>
+            <div class="btn btn-circle btn-success btn-butt">ANNULLA</div>
+          <% end %>
+          </div>
+        </div>
+        <div class="border-top border-success pt-3">
+          <h6 style="font-weight: bold;">PROGETTO</h6>
+          <h6><%= registration.event.project.name %></h6>
+          <h6 style="font-weight: bold; padding-top: 10px;">ATTIVITA'</h6>
+          <h6>Consegna pacchi a case famiglia e anziani.</h6>
+        </div>
+      </div>
+    </div>
+    <% end %>
+</div>

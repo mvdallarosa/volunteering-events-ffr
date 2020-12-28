@@ -1,0 +1,39 @@
+.footer {
+  background: $blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 20vh;
+  padding: 0 50px;
+  color: white;
+  img {
+    width: 15vw;
+  }
+  h5 {
+    padding-top: 10px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 300;
+  }
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+  .btn {
+    opacity: 1;
+    font-size: 16px;
+    color: $blue;
+  }
+}
+.footer-links a {
+  color: white;
+  opacity: 0.5;
+  text-decoration: none;
+  font-size: 30px;
+  padding: 0px 7px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}

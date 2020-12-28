@@ -1,40 +1,37 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :first_name, required: true, autofocus: true %>
-    <%= f.input :last_name, required: true %>
-    <%= f.input :phone_number, required: true %>
-    <%= f.input :photo, as: :file, label: false, required: false %>
-    <%= f.input :email, required: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-
+<div class="d-flex justify-content-center mt-5">
+  <div class="form-devise container-blue-center">
+    <h1 class="section-title mb-4 text-center">Modifica Account</h1>
+    <!--   <h2>Edit <%= resource_name.to_s.humanize %></h2> -->
+    <div class="d-flex justify-content-center">
+      <div>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :first_name, required: true, autofocus: true, label: false, input_html: { placeholder:"nome"}, error: 'Perfavore inserisci il tuo nome' %>
+          <%= f.input :last_name, required: true, label: false, input_html: { placeholder:"cognome"}, error: 'Perfavore inserisci il tuo cognome' %>
+          <%= f.input :phone_number, required: true, label: false, input_html: { placeholder:"numero di telefono"}, error: 'Perfavore inserisci il numero di telefono' %>
+          <%= f.input :photo, as: :file, label: false, required: true, label: false, input_html: { placeholder:"foto", class:"photo-input"} %>
+          <%= f.input :email, required: true, label: false, input_html: { placeholder:"email"}, error: 'Perfavore inserisci la tua email' %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+          <%= f.input :password,
+          hint: "leave it blank if you don't want to change it",
+          required: false, label: false, input_html: { placeholder:"nuova password", autocomplete: "new-password"} %>
+          <%= f.input :password_confirmation,
+          required: false, label: false, input_html: { placeholder:"nuova password", autocomplete: "new-password"} %>
+          <%= f.input :current_password,
+          hint: "we need your current password to confirm your changes",
+          required: true, label: false, input_html: { placeholder:"password attuale", autocomplete: "current-password"}, error: 'Perfavore inserisci la tua password attuale' %>
+        </div>
+        <div class="form-actions btn btn-light btn-circle mt-3">
+          <%= f.button :submit, "MODIFICA"%>
+        </div>
+        <% end %>
+        <div class="d-flex justify-content-center">
+          <p class="btn btn-outline-light" style="color: white !important; text-align: center; margin-top:30px; text-decoration: none;"><%= link_to "ELIMINA ACCOUNT", registration_path(resource_name), data: { confirm: "Sei sicuro?" }, method: :delete %>  <%= link_to "INDIETRO", :back %></p>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

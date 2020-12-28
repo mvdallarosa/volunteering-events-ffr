@@ -1,19 +1,22 @@
-.navbar-lewagon {
+.navbar-c {
   justify-content: space-between;
   background: white;
   li {
-    color: $blue;
     font-weight: bold;
     font-family: $body-font;
-    font-size: 25px;
+    font-size: 1.4rem;
     margin-right: 20px;
   }
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 100px;
+  a {
+    color: $blue !important;
+  }
+  a:hover {
+    opacity: 60%;
+  }
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+  .navbar-brand img {
+    width: 100px;
+  }
 }

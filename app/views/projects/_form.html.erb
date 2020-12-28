@@ -1,6 +1,11 @@
-<%= simple_form_for(@project) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit class: "btn btn-outline-primary"%>
-<% end %>
+
+
+<div class="container-blue form-project d-flex justify-content-between">
+  <h1 class="section-title">Crea un nuovo progetto</h1>
+  <%= simple_form_for(@project) do |f| %>
+    <i class="fas fa-quote-right icon-white"></i><%= f.input :name, label: false, required: true, input_html: { placeholder:"nome"}, error: 'Perfavore inserisci il nome' %>
+    <i class="fas fa-info-circle icon-white"></i><%= f.input :description, label: false, required: true, input_html: { placeholder:"descrizione"} %>
+    <i class="fas fa-images icon-white"></i><%= f.input :photo, as: :file, label: false, required: true, input_html: { placeholder:"foto", class:"photo-input"} %>
+    <%= f.submit class: "btn btn-warning btn-circle mt-3", placeholder: "CREA PROGETTO"%>
+  <% end %>
+</div>

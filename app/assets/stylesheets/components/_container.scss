@@ -1,0 +1,18 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3rem;
+}
+
+.container-blue {
+  background-color: $blue;
+  padding: 50px 150px;
+}
+
+.container-blue-center {
+  background-color: $blue;
+  padding: 50px;
+  width: 60vw;
+  color: blue;
+  border-radius: 15px;
+}

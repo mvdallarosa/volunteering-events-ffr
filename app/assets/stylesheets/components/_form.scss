@@ -1,0 +1,53 @@
+.form-project {
+  h1 {
+    text-align: left;
+  }
+  input {
+    border: none;
+    width: 35vw;
+    display: inline-block;
+  }
+  .photo-input {
+    color: white;
+  }
+  .icon-white {
+    color: white;
+  }
+}
+
+.form-registration {
+  input {
+    border: none;
+    width: 31vw;
+    display: inline-block;
+  }
+}
+
+.form-event {
+  input {
+    border: none;
+    width: 31vw;
+    display: inline-block;
+  }
+  .photo-input {
+    color: $blue;
+  }
+  .icon-blue {
+    color: $blue;
+  }
+}
+
+.form-devise {
+  color: white;
+  h1 {
+    text-align: left;
+  }
+  input {
+    border: none;
+    width: 50vw;
+    display: inline-block;
+  }
+  .photo-input {
+    color: white;
+  }
+}

@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :set_project
 
   def index
-    @events = Event.all
+    @events = Event.where(project: @project)
   end
 
   def show

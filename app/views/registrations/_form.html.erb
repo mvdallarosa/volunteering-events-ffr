@@ -1,5 +1,7 @@
-<%= simple_form_for [@project, @event, @registration] do |f| %>
-  <%= f.input :note %>
-  <%= f.input :car, as: :boolean %>
-  <%= f.submit class: "btn btn-outline-primary"%>
-<% end %>
+<div class="form-registration mt-4">
+  <%= simple_form_for [@project, @event, @registration] do |f| %>
+    <%= f.input :note, label: false, required: true, input_html: { placeholder:"*nota"}%>
+  <!--   <%= f.input :car, as: :boolean %> -->
+    <%= f.submit class: "btn btn-warning btn-circle mt-1", placeholder: "PARTECIPA COME VOLONTARIO"%>
+  <% end %>
+</div>
