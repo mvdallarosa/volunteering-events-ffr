@@ -16,13 +16,13 @@
   position: absolute;
   top: 25%;
   width: 70%;
-  height: 80vh;
+  min-height: 80vh;
   background-color: white;
   border-radius: 15px;
 }
 
 .event-info {
-  height: 50%;
+  min-height: 50%;
   border-radius: 15px 15px 0px 0px;
   background-color: $light-gray;
   img {
@@ -40,7 +40,7 @@
 }
 
 .event-details {
-  height: 50%;
+  min-height: 50%;
   p {
     color: $blue;
     font-size: 18px;
@@ -69,11 +69,11 @@
 }
 
 .short {
-  height: 20%;
+  height: 15%;
 }
 
 .high {
-  height: 80%;
+  height: 85%;
 }
 
 .event-icons {

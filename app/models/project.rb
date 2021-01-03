@@ -4,4 +4,5 @@ class Project < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true, length: { maximum: 3000,
     too_long: "Massimo %{count} caratteri" }
+  validates :photo, presence: true
 end
