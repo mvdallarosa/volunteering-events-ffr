@@ -16,15 +16,16 @@
   position: absolute;
   top: 25%;
   width: 70%;
-  min-height: 80vh;
+  height: 80vh;
   background-color: white;
   border-radius: 15px;
 }
 
 .event-info {
-  min-height: 50%;
+  height: 50% !important;
   border-radius: 15px 15px 0px 0px;
   background-color: $light-gray;
+  overflow: scroll;
   img {
     width: 50%;
     border-radius: 15px 0px 0px 0px;
@@ -41,6 +42,7 @@
 
 .event-details {
   min-height: 50%;
+
   p {
     color: $blue;
     font-size: 18px;
@@ -52,6 +54,7 @@
   .event-specs {
     width: 50%;
     display: flex;
+    overflow: auto;
     justify-content: center;
   }
 }
