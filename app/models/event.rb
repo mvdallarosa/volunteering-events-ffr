@@ -5,6 +5,10 @@ class Event < ApplicationRecord
   validates :project, presence: true
   validates :date, presence: true
   validates :location, presence: true
-  validates :activity, presence: true, length: { maximum: 1000,
-    too_long: "Massimo %{count} caratteri" }
+  # validates :activity, presence: true, length: { maximum: 1000,
+  #   too_long: "Massimo %{count} caratteri" }
+
+  def datetime
+    DateTime.parse(self.date)
+  end
 end

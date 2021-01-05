@@ -2,7 +2,7 @@
   <div class="container align-items-center d-flex justify-content-between">
     <div>
       <h1 class='page-title'>Diventa volontario con un click.</h1>
-      <%= link_to 'EXPLORA GLI EVENTI', projects_path, class: "btn btn-light mt-4" %>
+      <%= link_to 'ESPLORA GLI EVENTI', projects_path, class: "btn btn-light mt-4" %>
     </div>
   </div>
 </div>
@@ -16,13 +16,13 @@
       <div class="card-body">
         <div class="d-flex">
           <div class="flex-grow-1">
-            <h4 class="card-title"><%= event.date.strftime("%^a, %e %^b") %></h4>
-            <p><i class="fas fa-clock"></i> <%= event.date.strftime("%H:%M") %></p>
+            <h4 class="card-title"><%= event.datetime.strftime("%^a, %e %^b") %></h4>
+            <p><i class="fas fa-clock"></i> <%= event.datetime.strftime("%H:%M") %></p>
             <p><i class="fas fa-map-marker-alt"></i> Milano</p>
           </div>
           <div class="btn-container">
-          <%= link_to new_project_event_registration_path(project, event) do %>
-            <div class="btn btn-circle btn-warning btn-butt">PARTECIPA</div>
+          <%= link_to project_event_path(project, event) do %>
+            <div class="btn btn-circle btn-warning btn-butt">DETTAGLI</div>
           <% end %>
           </div>
         </div>

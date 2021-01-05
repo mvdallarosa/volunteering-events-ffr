@@ -1,34 +1,68 @@
-<div class="event-image-container">
-  <%= image_tag "sos-spesa", class: 'blurred-banner' %>
-  <div class="event-container">
-    <div class="event-info d-flex">
-      <%= image_tag "sos-spesa"%>
-      <div class="p-4 event-highlights">
-        <p style="font-weight: bold;"><i class="fas fa-calendar-alt"></i> <%= @event.date.strftime("%^a, %e %^b") %></p>
-        <p><i class="fas fa-clock"></i> <%= @event.date.strftime("%H:%M") %></p>
-        <p><i class="fas fa-map-marker-alt"></i> Via Pietro Verri, Trezzano</p>
-        <p><i class="fas fa-users"></i> 12 volontari si sono <strong>registrati</strong></p>
-        <br>
-        <br>
-        <div class="d-flex justify-content-end event-icons">
-          <%= link_to edit_project_event_path(@project, @event) do %><i class="fas fa-edit" style="margin-right: 15px; color: #b5b5b5 !important;"></i><% end %><%= link_to project_event_path(@project, @event), method: :delete, data: { confirm: "Sei sicuro di voler eliminare l'evento?" } do %><i class="fas fa-trash"></i><% end %>
+<% if current_user.admin %>
+  <div class="event-image-container">
+    <%= image_tag "sos-spesa", class: 'blurred-banner' %>
+    <div class="event-container">
+      <div class="event-info d-flex">
+        <%= image_tag "sos-spesa"%>
+        <div class="p-4 event-highlights">
+          <p style="font-weight: bold;"><i class="fas fa-calendar-alt"></i> <%= @event.datetime.strftime("%^a, %e %^b") %></p>
+          <p><i class="fas fa-clock"></i> <%= @event.datetime.strftime("%H:%M") %></p>
+          <p><i class="fas fa-map-marker-alt"></i> Via Pietro Verri, Trezzano</p>
+          <p><i class="fas fa-users"></i> 12 volontari si sono <strong>registrati</strong></p>
+          <br>
+          <br>
+          <div class="d-flex justify-content-end event-icons">
+            <%= link_to edit_project_event_path(@project, @event) do %><i class="fas fa-edit" style="margin-right: 15px; color: #b5b5b5 !important;"></i><% end %><%= link_to project_event_path(@project, @event), method: :delete, data: { confirm: "Sei sicuro di voler eliminare l'evento?" } do %><i class="fas fa-trash"></i><% end %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="event-details d-flex p-4">
-      <div class="project-specs p-4">
-        <h1 class="paragraph-title"> <%= @event.project.name %></h1>
-        <p> La Fondazione Francesca Rava è in prima linea da mesi con tantissimi volontari e ha già aiutato 43.000 persone consegnando generi alimentari, mascherine, gel disinfettanti e strumenti per la didattica a distanza.</p>
-      </div>
-      <div class="event-specs p-4">
-        <div class="border border-warning p-3">
-          <p style="font-weight: bold;">ATTIVITA'</p>
-          <p>Consegna pacchi a case famiglia e anziani.</p>
-          <br>
-          <p style="font-weight: bold;">INFORMAZIONI *</p>
-          <p>Chiediamo la cortesia di avvisare con una nota se avete una macchina disponibile le consegne.</p>
+      <div class="event-details d-flex p-4">
+        <div class="project-specs p-4">
+          <h1 class="paragraph-title"> <%= @event.project.name %></h1>
+          <p> La Fondazione Francesca Rava è in prima linea da mesi con tantissimi volontari e ha già aiutato 43.000 persone consegnando generi alimentari, mascherine, gel disinfettanti e strumenti per la didattica a distanza.</p>
+        </div>
+        <div class="event-specs p-4">
+          <div class="border border-warning p-3">
+            <p style="font-weight: bold;">ATTIVITA'</p>
+            <p>Consegna pacchi a case famiglia e anziani.</p>
+            <br>
+            <p style="font-weight: bold;">INFORMAZIONI *</p>
+            <p>Chiediamo la cortesia di avvisare con una nota se avete una macchina disponibile le consegne.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+<% else %>
+  <div class="event-image-container">
+    <%= image_tag "sos-spesa", class: 'blurred-banner' %>
+    <div class="event-container">
+      <div class="event-info d-flex">
+        <%= image_tag "sos-spesa"%>
+        <div class="p-4 event-highlights">
+          <p style="font-weight: bold;"><i class="fas fa-calendar-alt"></i> <%= @event.datetime.strftime("%^a, %e %^b") %></p>
+          <p><i class="fas fa-clock"></i> <%= @event.datetime.strftime("%H:%M") %></p>
+          <p><i class="fas fa-map-marker-alt"></i> Via Pietro Verri, Trezzano</p>
+          <%= link_to new_project_event_registration_path(@project, @event) do  %><div class="btn btn-warning btn-circle mt-3">PARTECIPA</div><% end %>
+        </div>
+      </div>
+      <div class="event-details d-flex p-4">
+        <div class="project-specs p-4">
+          <h1 class="paragraph-title"> <%= @event.project.name %></h1>
+          <p> La Fondazione Francesca Rava è in prima linea da mesi con tantissimi volontari e ha già aiutato 43.000 persone consegnando generi alimentari, mascherine, gel disinfettanti e strumenti per la didattica a distanza.</p>
+        </div>
+        <div class="event-specs p-4">
+          <div class="border border-warning p-3">
+            <p style="font-weight: bold;">ATTIVITA'</p>
+            <p>Consegna pacchi a case famiglia e anziani.</p>
+            <br>
+            <p style="font-weight: bold;">INFORMAZIONI *</p>
+            <p>Chiediamo la cortesia di avvisare con una nota se avete una macchina disponibile le consegne.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

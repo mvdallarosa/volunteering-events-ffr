@@ -1,32 +1,68 @@
-<div class="banner d-flex align-items-end mb-4" style="background-image: linear-gradient(rgba(6, 44, 78, 0.4), rgba(6, 44, 78, 0.4)), url(<%= asset_path 'sos-spesa.png' %>);">
-  <div class="container align-items-center d-flex justify-content-between">
-    <h1 class='page-title'> <%= @project.name.upcase %></h1>
-    <%= link_to project_path(@project) do %>
-      <p class="btn btn-success btn-lg fw-bold"> SCOPRI DI PIU' </p>
-    <% end %>
-  </div>
-</div>
-<div class="container grid-container">
-  <% @events.each do |event| %>
-  <div class="card event-card">
-    <div class="card-body">
-      <div class="d-flex">
-        <div class="flex-grow-1">
-          <h4 class="card-title"><%= event.date.strftime("%^a, %e %^b") %></h4>
-          <p><i class="fas fa-clock"></i> <%= event.date.strftime("%H:%M") %></p>
-          <p><i class="fas fa-map-marker-alt"></i> Milano</p>
-        </div>
-        <div class="btn-container">
-        <%= link_to new_project_event_registration_path(@project, event) do %>
-          <div class="btn btn-circle btn-warning btn-butt">PARTECIPA</div>
-        <% end %>
-        </div>
-      </div>
-      <div class="d-flex">
-        <h6 class="fw-bold border-top border-warning pt-3">Consegna pacchi a case famiglia e anziani.</h6>
-      </div>
+<% if current_user.admin %>
+
+  <div class="banner d-flex align-items-end mb-4" style="background-image: linear-gradient(rgba(6, 44, 78, 0.4), rgba(6, 44, 78, 0.4)), url(<%= asset_path 'sos-spesa.png' %>);">
+    <div class="container align-items-center d-flex justify-content-between">
+      <h1 class='page-title'> <%= @project.name.upcase %></h1>
+      <%= link_to edit_project_path(@project) do %>
+        <p class="btn btn-success btn-lg fw-bold"> DETTAGLI PROGETTO </p>
+      <% end %>
     </div>
   </div>
-  <% end %>
-</div>
-<%= link_to 'NEW EVENT', new_project_event_path(@project), class: "btn btn-outline-primary" %>
+  <div class="container grid-container">
+    <% @events.each do |event| %>
+    <div class="card event-card">
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="flex-grow-1">
+            <h4 class="card-title"><%= event.datetime.strftime("%^a, %e %^b") %></h4>
+            <p><i class="fas fa-clock"></i> <%= event.datetime.strftime("%H:%M") %></p>
+            <p><i class="fas fa-map-marker-alt"></i> Milano</p>
+          </div>
+          <div class="btn-container">
+          <%= link_to project_event_path(@project, event) do %>
+            <div class="btn btn-circle btn-warning btn-butt">DETTAGLI</div>
+          <% end %>
+          </div>
+        </div>
+        <div class="d-flex">
+          <h6 class="fw-bold border-top border-warning pt-3">Consegna pacchi a case famiglia e anziani.</h6>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+<% else %>
+  <div class="banner d-flex align-items-end mb-4" style="background-image: linear-gradient(rgba(6, 44, 78, 0.4), rgba(6, 44, 78, 0.4)), url(<%= asset_path 'sos-spesa.png' %>);">
+    <div class="container align-items-center d-flex justify-content-between">
+      <h1 class='page-title'> <%= @project.name.upcase %></h1>
+      <%= link_to "#" do %>
+        <p class="btn btn-success btn-lg fw-bold"> SCOPRI DI PIU' </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="container grid-container">
+    <% @events.each do |event| %>
+    <div class="card event-card">
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="flex-grow-1">
+            <h4 class="card-title"><%= event.datetime.strftime("%^a, %e %^b") %></h4>
+            <p><i class="fas fa-clock"></i> <%= event.datetime.strftime("%H:%M") %></p>
+            <p><i class="fas fa-map-marker-alt"></i> Milano</p>
+          </div>
+          <div class="btn-container">
+          <%= link_to new_project_event_registration_path(@project, event) do %>
+            <div class="btn btn-circle btn-warning btn-butt">PARTECIPA</div>
+          <% end %>
+          </div>
+        </div>
+        <div class="d-flex">
+          <h6 class="fw-bold border-top border-warning pt-3">Consegna pacchi a case famiglia e anziani.</h6>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+<% end %>

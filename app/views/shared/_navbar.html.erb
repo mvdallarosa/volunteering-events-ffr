@@ -11,26 +11,45 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto pb-0">
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to projects_path, class: "nav-link" do %> <i class="fas fa-plus-square icon-orange"></i> <% end %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "HOME", "/", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "PROGETTI", projects_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <a href="mailto:volontari@nph.org" class="nav-link">CONTATTACI</a>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/mvdallarosa", class: "avatar avatar-admin dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Modifica Profilo", edit_user_registration_path, class: "dropdown-item" %>
-            <%= link_to "Prossimi Appuntamenti", "/registrations", class: "dropdown-item" %>
-            <%= link_to "Esci", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <%= link_to projects_path, class: "nav-link" do %> <i class="fas fa-plus-square icon-orange"></i> <% end %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "HOME", "/", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "PROGETTI", new_project_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "VOLONTARI", volunteers_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/mvdallarosa", class: "avatar avatar-admin dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "Modifica Profilo", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Esci", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to "HOME", "/", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "PROGETTI", projects_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <a href="mailto:volontari@nph.org" class="nav-link">CONTATTACI</a>
+          </li>
+          <li class="nav-item dropdown">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/mvdallarosa", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "Modifica Profilo", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Prossimi Appuntamenti", "/registrations", class: "dropdown-item" %>
+              <%= link_to "Esci", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% end %>
       <% else %>
         <li class="nav-item">
           <%= link_to "ACCEDI", new_user_session_path, class: "nav-link" %>
