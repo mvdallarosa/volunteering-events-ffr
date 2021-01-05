@@ -4,7 +4,11 @@
     <%= image_tag "sos-spesa", class: 'blurred-banner' %>
     <div class="event-container">
       <div class="event-info d-flex high">
-        <%= image_tag "sos-spesa"%>
+        <% if @project.photo.attached? %>
+          <%= cl_image_tag @project.photo.key %>
+        <% else %>
+          <%= image_tag "sos-spesa"%>
+        <% end %>
         <div class="p-4 event-highlights">
           <%= render "form" %>
         </div>
