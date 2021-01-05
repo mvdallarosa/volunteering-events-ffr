@@ -1,19 +1,24 @@
 <% if current_user.admin %>
   <div class="container mt-5">
-    <h1 class="page-title">Vuoi creare un evento per quale progetto?</h1>
-    <div class="grid-container">
-      <% @projects.each do |project| %>
-      <div class="card project-card">
-        <%= image_tag "sos-spesa", class: 'card-img-top' %>
-        <div class="card-body d-flex">
-          <h3 class="card-title mr-2 flex-grow-1"><%= project.name.upcase %></h3>
-          <%= link_to new_project_event_path(project) do %>
-          <p><i class="fas fa-arrow-circle-right icon-small"></i></p>
-          <% end %>
+    <% if @projects.count == 0 %>
+      <h1 class="page-title">Vuoi creare un nuovo progetto?</h1>
+      <%= link_to new_project_path do  %><div class="btn btn-warning btn-circle mt-3">CREA</div><% end %>
+    <% else %>
+      <h1 class="page-title">Vuoi creare un evento per quale progetto?</h1>
+      <div class="grid-container">
+        <% @projects.each do |project| %>
+        <div class="card project-card">
+          <%= image_tag "sos-spesa", class: 'card-img-top' %>
+          <div class="card-body d-flex">
+            <h3 class="card-title mr-2 flex-grow-1"><%= project.name.upcase %></h3>
+            <%= link_to new_project_event_path(project) do %>
+            <p><i class="fas fa-arrow-circle-right icon-small"></i></p>
+            <% end %>
+          </div>
         </div>
+        <% end %>
       </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 <% else %>
   <div class="container mt-5">

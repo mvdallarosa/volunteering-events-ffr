@@ -4,7 +4,7 @@
     <div class="container align-items-center d-flex justify-content-between">
       <h1 class='page-title'> <%= @project.name.upcase %></h1>
       <%= link_to edit_project_path(@project) do %>
-        <p class="btn btn-success btn-lg fw-bold"> DETTAGLI PROGETTO </p>
+        <p class="btn btn-primary btn-lg fw-bold"> DETTAGLI PROGETTO </p>
       <% end %>
     </div>
   </div>
@@ -20,7 +20,7 @@
           </div>
           <div class="btn-container">
           <%= link_to project_event_path(@project, event) do %>
-            <div class="btn btn-circle btn-warning btn-butt">DETTAGLI</div>
+            <div class="btn btn-circle btn-warning"><i class="fas fa-external-link-square-alt"></i></div>
           <% end %>
           </div>
         </div>

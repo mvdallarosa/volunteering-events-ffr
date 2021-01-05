@@ -18,16 +18,16 @@
           <div class="flex-grow-1">
             <h4 class="card-title"><%= event.datetime.strftime("%^a, %e %^b") %></h4>
             <p><i class="fas fa-clock"></i> <%= event.datetime.strftime("%H:%M") %></p>
-            <p><i class="fas fa-map-marker-alt"></i> Milano</p>
+            <p><i class="fas fa-map-marker-alt"></i><%= event.location == nil ? "n/a" : event.location %></p>
           </div>
           <div class="btn-container">
           <%= link_to project_event_path(project, event) do %>
-            <div class="btn btn-circle btn-warning btn-butt">DETTAGLI</div>
+            <div class="btn btn-xl btn-circle btn-warning"><i class="fas fa-external-link-square-alt"></i></div>
           <% end %>
           </div>
         </div>
         <div class="d-flex">
-          <h6 class="fw-bold border-top border-warning pt-3">Consegna pacchi a case famiglia e anziani.</h6>
+          <h6 class="fw-bold border-top border-warning pt-3"><%= event.activity == nil ? "n/a" : event.activity %></h6>
         </div>
       </div>
     </div>

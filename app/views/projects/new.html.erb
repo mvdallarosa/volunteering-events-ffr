@@ -1,7 +1,9 @@
 <% if current_user.admin %>
 
   <div class="container my-5">
-    <h1 class="page-title">Progetti in corso</h1>
+    <% if @projects.count != 0 %>
+      <h1 class="page-title">Progetti in corso</h1>
+    <% end %>
     <div class="grid-container">
       <% @projects.each do |project| %>
       <div class="card project-card">
