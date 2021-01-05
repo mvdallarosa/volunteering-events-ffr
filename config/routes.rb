@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     end
   end
   get '/registrations', to: 'pages#registrations', as: 'user_registrations'
+  get '/volunteers', to: 'pages#volunteers', as: 'volunteers'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

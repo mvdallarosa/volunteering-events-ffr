@@ -6,8 +6,8 @@
       <div class="card-body">
         <div class="d-flex">
           <div class="flex-grow-1">
-            <h4 class="card-title"><%= registration.event.date.strftime("%^a, %e %^b") %></h4>
-            <p><i class="fas fa-clock"></i> <%= registration.event.date.strftime("%H:%M") %></p>
+            <h4 class="card-title"><%= registration.event.datetime.strftime("%^a, %e %^b") %></h4>
+            <p><i class="fas fa-clock"></i> <%= registration.event.datetime.strftime("%H:%M") %></p>
             <p><i class="fas fa-map-marker-alt"></i> Milano</p>
           </div>
           <div class="btn-container">

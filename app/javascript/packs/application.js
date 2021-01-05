@@ -34,4 +34,12 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   datePicker();
+  const addressInput = document.querySelector('.address-input');
+  if (addressInput) {
+    var places = require('places.js');
+    var placesAutocomplete = places({
+      apiKey: "7eb21f991499998723a42a4aac526794",
+      container: addressInput
+    });
+  }
 });

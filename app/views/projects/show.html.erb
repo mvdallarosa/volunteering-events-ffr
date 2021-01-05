@@ -1,14 +1,2 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
 
-<ul>
-  <li> <%= @project.name %> </li>
-  <li> <%= @project.description %> </li>
-</ul>
-
-<%= link_to edit_project_path(@project) do %><i class="far fa-edit"></i><% end %> | <%= link_to project_path(@project), method: :delete, data: { confirm: "Are you sure you would like to delete?" } do %><i class="far fa-trash-alt"></i><% end %>
-<br>
-<br>
-<%= link_to 'NEW EVENT', new_project_event_path(@project), class: "btn btn-outline-primary" %>
-<%= link_to 'PROJECT EVENTS', project_events_path(@project), class: "btn btn-outline-secondary" %>
 

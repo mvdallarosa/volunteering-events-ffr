@@ -8,4 +8,8 @@ class PagesController < ApplicationController
   def registrations
     @registrations = Registration.where(user_id: current_user.id)
   end
+
+  def volunteers
+    @volunteers = User.where(admin: false)
+  end
 end
