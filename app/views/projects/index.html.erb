@@ -8,7 +8,11 @@
       <div class="grid-container">
         <% @projects.each do |project| %>
         <div class="card project-card">
-          <%= image_tag "sos-spesa", class: 'card-img-top' %>
+          <% if project.photo.attached? %>
+            <%= cl_image_tag project.photo.key, class: 'card-img-top' %>
+          <% else %>
+            <%= image_tag "sos-spesa", class: 'card-img-top' %>
+          <% end %>
           <div class="card-body d-flex">
             <h3 class="card-title mr-2 flex-grow-1"><%= project.name.upcase %></h3>
             <%= link_to new_project_event_path(project) do %>
@@ -26,7 +30,11 @@
     <div class="grid-container">
       <% @projects.each do |project| %>
       <div class="card project-card">
-        <%= image_tag "sos-spesa", class: 'card-img-top' %>
+        <% if project.photo.attached? %>
+          <%= cl_image_tag project.photo.key, class: 'card-img-top' %>
+        <% else %>
+          <%= image_tag "sos-spesa", class: 'card-img-top' %>
+        <% end %>
         <div class="card-body d-flex">
           <h3 class="card-title mr-2 flex-grow-1"><%= project.name.upcase %></h3>
           <%= link_to project_events_path(project) do %>
