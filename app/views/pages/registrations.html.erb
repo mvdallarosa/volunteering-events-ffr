@@ -8,7 +8,7 @@
           <div class="flex-grow-1">
             <h4 class="card-title"><%= registration.event.datetime.strftime("%^a, %e %^b") %></h4>
             <p><i class="fas fa-clock"></i> <%= registration.event.datetime.strftime("%H:%M") %></p>
-            <p><i class="fas fa-map-marker-alt"></i> Milano</p>
+            <p><i class="fas fa-map-marker-alt"></i><%= registration.event.location == nil ? "n/a" : registration.event.location %></p>
           </div>
           <div class="btn-container">
           <%= link_to project_event_registration_path(registration.event.project, registration.event, registration), method: :delete, data: { confirm: "Sei sicuro di non voler più partecipare?" } do %>
@@ -20,7 +20,7 @@
           <h6 style="font-weight: bold;">PROGETTO</h6>
           <h6><%= registration.event.project.name %></h6>
           <h6 style="font-weight: bold; padding-top: 10px;">ATTIVITA'</h6>
-          <h6>Consegna pacchi a case famiglia e anziani.</h6>
+          <h6><%= registration.event.activity == nil ? "n/a" : registration.event.activity %></h6>
         </div>
       </div>
     </div>
