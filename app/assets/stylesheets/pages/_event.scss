@@ -9,7 +9,14 @@
   position: relative;
   display: flex;
   justify-content: center;
+}
 
+.bigger-event-image-container {
+  margin-bottom: 100vh;
+}
+
+.smaller-event-image-container {
+  margin-bottom: 50vh;
 }
 
 .event-container {
@@ -21,11 +28,21 @@
   border-radius: 15px;
 }
 
+.event-container-form {
+  height: 100vh;
+}
+
+
 .event-info {
   height: 50%;
   border-radius: 15px 15px 0px 0px;
   background-color: $light-gray;
   overflow: scroll;
+  .half-banner {
+    width: 50%;
+    border-radius: 15px 0px 0px 0px;
+    object-fit: cover;
+  }
   img {
     width: 50%;
     border-radius: 15px 0px 0px 0px;
@@ -56,6 +73,9 @@
     display: flex;
     overflow: auto;
     justify-content: center;
+    .orange-box {
+      min-width: 100%;
+    }
   }
 }
 
@@ -71,12 +91,16 @@
   border-radius: 0px 0px 15px 15px;
 }
 
+.full {
+  height: 100%;
+}
+
 .short {
-  height: 15%;
+  height: 12%;
 }
 
 .high {
-  height: 85%;
+  height: 88%;
 }
 
 .event-icons {

@@ -1,12 +1,12 @@
 <% if current_user.admin %>
 
-  <div class="event-image-container">
+  <div class="event-image-container bigger-event-image-container">
     <% if @project.photo.attached? %>
       <%= cl_image_tag @project.photo.key, class: 'blurred-banner' %>
     <% else %>
       <%= image_tag "sos-spesa", class: 'blurred-banner'%>
     <% end %>
-    <div class="event-container">
+    <div class="event-container event-container-form">
       <div class="event-info d-flex high">
         <% if @project.photo.attached? %>
           <%= cl_image_tag @project.photo.key %>
@@ -24,3 +24,4 @@
   </div>
 
 <% end %>
+

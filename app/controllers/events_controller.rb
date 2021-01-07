@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @volunteers = User.all.select { |user| user.events.include?(@event) }
   end
 
   def new
@@ -18,9 +19,47 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.project = @project
     if @event.save
+      create_more
       redirect_to project_events_path(@project)
     else
       render :new
+    end
+  end
+
+  def create_more
+    if @event.repeat == 'ogni settimana'
+      event_date = DateTime.parse(params[:event][:date])
+      end_date = params[:event][:end_date] == nil ? Date.today + 3.months : params[:event][:end_date]
+      loop do
+        event_date += 1.week
+        break if event_date > Date.parse(end_date)
+        event = Event.new(event_params)
+        event.date = event_date
+        event.project = @project
+        event.save
+      end
+    elsif @event.repeat == 'ogni due settimane'
+      event_date = DateTime.parse(params[:event][:date])
+      end_date = params[:event][:end_date] == nil ? Date.today + 3.months : params[:event][:end_date]
+      loop do
+        event_date += 2.weeks
+        break if event_date > Date.parse(end_date)
+        event = Event.new(event_params)
+        event.date = event_date
+        event.project = @project
+        event.save
+      end
+    elsif @event.repeat == 'ogni mese'
+      event_date = DateTime.parse(params[:event][:date])
+      end_date = params[:event][:end_date] == nil ? Date.today + 3.months : params[:event][:end_date]
+      loop do
+        event_date += 1.month
+        break if event_date > Date.parse(end_date)
+        event = Event.new(event_params)
+        event.date = event_date
+        event.project = @project
+        event.save
+      end
     end
   end
 
@@ -40,7 +79,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:date, :location, :activity, :closed, :information, :photo)
+    params.require(:event).permit(:date, :location, :activity, :closed, :information, :photo, :repeat, :end_date)
   end
 
   def set_project

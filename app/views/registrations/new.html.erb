@@ -4,8 +4,8 @@
     <div class="event-info d-flex small-image">
       <%= image_tag "sos-spesa"%>
       <div class="p-4">
-        <p style="font-weight: bold;"><i class="fas fa-calendar-alt"></i> <%= @event.date.strftime("%^a, %e %^b") %></p>
-        <p><i class="fas fa-clock"></i> <%= @event.date.strftime("%H:%M") %></p>
+        <p style="font-weight: bold;"><i class="fas fa-calendar-alt"></i> <%= @event.datetime.strftime("%^a, %e %^b") %></p>
+        <p><i class="fas fa-clock"></i> <%= @event.datetime.strftime("%H:%M") %></p>
         <p><i class="fas fa-map-marker-alt"></i> <%= @event.location == nil ? "n/a" : @event.location %> </p>
         <%= render "form" %>
       </div>

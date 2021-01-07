@@ -1,5 +1,5 @@
 <% if current_user.admin %>
-  <div class="event-image-container">
+  <div class="event-image-container smaller-event-image-container">
     <%= image_tag "sos-spesa", class: 'blurred-banner' %>
     <div class="event-container">
       <div class="event-info d-flex">
@@ -25,7 +25,7 @@
           <p><%= @event.project.description == nil ? "n/a" : @event.project.description  %></p>
         </div>
         <div class="event-specs p-4">
-          <div class="border border-warning p-3">
+          <div class="orange-box border border-warning p-3">
             <p style="font-weight: bold;">ATTIVITA'</p>
             <p><%= @event.activity == nil ? "n/a" : @event.activity  %></p>
             <br>
@@ -36,6 +36,39 @@
       </div>
     </div>
   </div>
+  <div class="container">
+    <% if @volunteers.count != 0 %>
+    <h1 class="section-title-blue mb-4">Chi parteciperà?</h1>
+    <% end %>
+  <div class="grid-container">
+    <% @volunteers.each do |volunteer| %>
+    <div class="card registrations-card">
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="flex-grow-1">
+            <h4 class="card-title"><%= volunteer.first_name.capitalize %> <%= volunteer.last_name.capitalize %></h4>
+            <p><i class="fas fa-envelope"></i><a href="mailto:<%= volunteer.email %>" class="pl-2"><%= volunteer.email %></a></p>
+            <p><i class="fas fa-phone-alt"></i><a href="num:<%= volunteer.phone_number %>" class="pl-2"><%= volunteer.phone_number %></a></p>
+          </div>
+          <div class="btn-container">
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, class: 'avatar' %>
+            <% else %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/mvdallarosa", class: "avatar" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="border-top border-success pt-3">
+          <h6 style="font-weight: bold;">VOLONTARIO DA:</h6>
+          <h6><%= volunteer.created_at.strftime("%e %b, %Y") %></h6>
+          <h6 style="font-weight: bold; padding-top: 10px;">HA PARTECIPATO A:</h6>
+          <h6><%= volunteer.registrations == nil ? 0 : volunteer.registrations.size %> eventi.</h6>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 
 <% else %>
   <div class="event-image-container">
