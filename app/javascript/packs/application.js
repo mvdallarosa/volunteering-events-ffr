@@ -29,11 +29,14 @@ import "@fortawesome/fontawesome-free/js/all";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { datePicker } from '../plugins/flatpickr';
+import { closeEvent, openEvent } from '../components/close_btn';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   datePicker();
+  closeEvent();
+  openEvent();
   const addressInput = document.querySelector('.address-input');
   if (addressInput) {
     var places = require('places.js');

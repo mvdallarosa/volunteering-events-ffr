@@ -67,8 +67,15 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event.update(event_params)
-    redirect_to project_events_path(@project)
+    url = Rails.application.routes.recognize_path(request.referrer)
+    if url[:action] == 'show'
+      @event.closed = params[:event][:closed] == "0" ? true : false
+      @event.save
+    else
+      raise
+      @event.update(event_params)
+    end
+    redirect_to project_event_path(@project, @event)
   end
 
   def destroy
