@@ -14,8 +14,16 @@
           <p><i class="fas fa-map-marker-alt"></i> <%= @event.location == nil ? "n/a" : @event.location  %></p>
           <p><i class="fas fa-users"></i> <%= @event.registrations == nil ? 0 : @event.registrations.count %> volontari si sono <strong>registrati</strong></p>
           <br>
-          <div class="d-flex justify-content-end event-icons">
+          <div class="d-flex justify-content-between event-icons align-items-center">
+            <% if @event.closed %>
+              <div class="btn btn-disabled btn-circle open-btn">RIAPRI ISCRIZIONI</div>
+            <% else %>
+              <div class="btn btn-warning btn-circle close-btn">CHIUDI ISCRIZIONI</div>
+            <% end %>
+
+            <div>
             <%= link_to edit_project_event_path(@project, @event) do %><i class="fas fa-edit" style="margin-right: 15px; color: #b5b5b5 !important;"></i><% end %><%= link_to project_event_path(@project, @event), method: :delete, data: { confirm: "Sei sicuro di voler eliminare l'evento?" } do %><i class="fas fa-trash"></i><% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -70,6 +78,16 @@
   </div>
 </div>
 
+
+  <div style="display: none;">
+    <%= simple_form_for([@project, @event], :html=> { class: 'close-form' }) do |f| %>
+      <%= f.input :closed, input_html: { class: 'close-input' } %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+
+
+
 <% else %>
   <div class="event-image-container">
     <%= image_tag "sos-spesa", class: 'blurred-banner' %>
@@ -84,7 +102,11 @@
           <p style="font-weight: bold;"><i class="fas fa-calendar-alt"></i> <%= @event.datetime.strftime("%^a, %e %^b") %></p>
           <p><i class="fas fa-clock"></i> <%= @event.datetime.strftime("%H:%M") %></p>
           <p><i class="fas fa-map-marker-alt"></i> <%= @event.location == nil ? "n/a" : @event.location %></p>
-          <%= link_to new_project_event_registration_path(@project, @event) do  %><div class="btn btn-warning btn-circle mt-3">PARTECIPA</div><% end %>
+          <% if @event.closed %>
+            <div class="btn btn-disabled btn-circle mt-3 disabled">REGISTRAZIONI CHIUSE</div>
+          <% else %>
+            <%= link_to new_project_event_registration_path(@project, @event) do  %><div class="btn btn-warning btn-circle mt-3">PARTECIPA</div><% end %>
+          <% end %>
         </div>
       </div>
       <div class="event-details d-flex p-4">
@@ -93,7 +115,7 @@
           <p><%= @event.project.description == nil ? "n/a" : @event.project.description  %></p>
         </div>
         <div class="event-specs p-4">
-          <div class="border border-warning p-3">
+          <div class="orange-box border border-warning p-3">
             <p style="font-weight: bold;">ATTIVITA'</p>
             <p><%= @event.activity == nil ? "n/a" : @event.activity %></p>
             <br>
