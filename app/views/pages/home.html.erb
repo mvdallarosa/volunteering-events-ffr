@@ -18,7 +18,7 @@
           <div class="flex-grow-1">
             <h4 class="card-title"><%= event.datetime.strftime("%^a, %e %^b") %></h4>
             <p><i class="fas fa-clock"></i> <%= event.datetime.strftime("%H:%M") %></p>
-            <p><i class="fas fa-map-marker-alt"></i><%= event.location == nil ? "n/a" : event.location %></p>
+            <p><i class="fas fa-map-marker-alt"></i> <%= event.location == nil ? "n/a" : event.location %></p>
           </div>
           <div class="btn-container">
           <%= link_to project_event_path(project, event) do %>

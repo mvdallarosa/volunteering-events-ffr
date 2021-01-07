@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :find_project, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @projects = Project.all
+    @projects = Project.all.select { |project| project.events.count > 0 }
   end
 
   def show
