@@ -13,8 +13,8 @@
               <p><i class="fas fa-phone-alt"></i><a href="num:<%= volunteer.phone_number %>" class="pl-2"><%= volunteer.phone_number %></a></p>
             </div>
             <div class="btn-container">
-              <% if current_user.photo.attached? %>
-                <%= cl_image_tag current_user.photo.key, class: 'avatar' %>
+              <% if volunteer.photo.attached? %>
+                <%= cl_image_tag volunteer.photo.key, class: 'avatar' %>
               <% else %>
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/mvdallarosa", class: "avatar" %>
               <% end %>
