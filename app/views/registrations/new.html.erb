@@ -1,13 +1,17 @@
 <% if !current_user.admin %>
 
 <div class="event-image-container">
-  <%= image_tag "sos-spesa", class: 'blurred-banner' %>
+  <% if @event.project.photo.attached? %>
+    <%= cl_image_tag @event.project.photo.key, class: 'blurred-banner'%>
+  <% else %>
+    <%= image_tag "https://res.cloudinary.com/chunhua/image/upload/v1610124765/sos-spesa_z5njbh.png", class: 'blurred-banner' %>
+  <% end %>
   <div class="event-container">
     <div class="event-info d-flex">
       <% if @event.photo.attached? %>
         <%= cl_image_tag @event.photo.key %>
       <% else %>
-        <%= image_tag "sos-spesa"%>
+        <%= image_tag "https://res.cloudinary.com/chunhua/image/upload/v1610124765/sos-spesa_z5njbh.png"%>
       <% end %>
       <div class="p-4">
         <p style="font-weight: bold;"><i class="fas fa-calendar-alt"></i> <%= @event.datetime.strftime("%^a, %e %^b") %></p>

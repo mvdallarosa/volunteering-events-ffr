@@ -4,14 +4,14 @@
     <% if @project.photo.attached? %>
       <%= cl_image_tag @project.photo.key, class: 'blurred-banner' %>
     <% else %>
-      <%= image_tag "sos-spesa", class: 'blurred-banner'%>
+      <%= image_tag "https://res.cloudinary.com/chunhua/image/upload/v1610124765/sos-spesa_z5njbh.png", class: 'blurred-banner'%>
     <% end %>
     <div class="event-container event-container-form">
       <div class="event-info d-flex high">
         <% if @project.photo.attached? %>
           <%= cl_image_tag @project.photo.key, class: 'form-image' %>
         <% else %>
-          <%= image_tag "sos-spesa", class: 'form-image'%>
+          <%= image_tag "https://res.cloudinary.com/chunhua/image/upload/v1610124765/sos-spesa_z5njbh.png", class: 'form-image'%>
         <% end %>
         <div class="p-4 event-highlights">
           <%= render "form" %>

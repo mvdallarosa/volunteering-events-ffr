@@ -1,17 +1,17 @@
 <% if current_user.admin %>
   <div class="container mt-5">
-    <% if @projects.count == 0 %>
+    <% if Project.all.count == 0 %>
       <h1 class="page-title">Vuoi creare un nuovo progetto?</h1>
       <%= link_to new_project_path do  %><div class="btn btn-warning btn-circle mt-3">CREA</div><% end %>
     <% else %>
       <h1 class="page-title">Vuoi creare un evento per quale progetto?</h1>
       <div class="grid-container">
-        <% @projects.each do |project| %>
+        <% Project.all.each do |project| %>
         <div class="card project-card">
           <% if project.photo.attached? %>
             <%= cl_image_tag project.photo.key, class: 'card-img-top' %>
           <% else %>
-            <%= image_tag "sos-spesa", class: 'card-img-top' %>
+            <%= image_tag "https://res.cloudinary.com/chunhua/image/upload/v1610124765/sos-spesa_z5njbh.png", class: 'card-img-top' %>
           <% end %>
           <div class="card-body d-flex">
             <h3 class="card-title mr-2 flex-grow-1"><%= project.name.upcase %></h3>
@@ -33,7 +33,7 @@
         <% if project.photo.attached? %>
           <%= cl_image_tag project.photo.key, class: 'card-img-top' %>
         <% else %>
-          <%= image_tag "sos-spesa", class: 'card-img-top' %>
+          <%= image_tag "https://res.cloudinary.com/chunhua/image/upload/v1610124765/sos-spesa_z5njbh.png", class: 'card-img-top' %>
         <% end %>
         <div class="card-body d-flex">
           <h3 class="card-title mr-2 flex-grow-1"><%= project.name.upcase %></h3>
