@@ -72,7 +72,6 @@ class EventsController < ApplicationController
       @event.closed = params[:event][:closed] == "0" ? true : false
       @event.save
     else
-      raise
       @event.update(event_params)
     end
     redirect_to project_event_path(@project, @event)

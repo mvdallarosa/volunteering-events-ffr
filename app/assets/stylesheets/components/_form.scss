@@ -60,3 +60,54 @@
     width: 30vw;
   }
 }
+
+@media (max-width: 500px) {
+  .form-project {
+    display: block !important;
+    h1 {
+      text-align: left;
+    }
+    input {
+      border: none;
+      width: 80vw;
+      display: inline-block;
+    }
+  }
+  .form-devise {
+    display: block !important;
+    input {
+      width: 100%;
+      font-size: 16px;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 500px) and (max-width: 1000px) {
+  .form-project {
+    display: block !important;
+    h1 {
+      text-align: left;
+    }
+    input {
+      border: none;
+      width: 90vw;
+      display: inline-block;
+    }
+    button {
+      width: 90vw;
+    }
+  }
+  .form-devise {
+    display: block !important;
+    width: 100%;
+    input {
+      width: 100%;
+    }
+    button {
+      width: 100%;
+    }
+  }
+}
+
+

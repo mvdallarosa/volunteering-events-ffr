@@ -37,3 +37,41 @@
 .footer-links a:hover {
   opacity: 1;
 }
+
+.margin-footer-extra {
+  margin-bottom: 20vh;
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 500px) {
+  .footer {
+    height: 18vh;
+    padding: 0 10px;
+    color: white;
+    img {
+      width: 25vw;
+    }
+    h5 {
+      font-size: 14px;
+    }
+    p {
+      font-size: 11px;
+    }
+  }
+  .footer-links {
+    .btn {
+      font-size: 10px;
+    }
+  }
+  .footer-links a {
+    font-size: 20px;
+    padding: 0px 4px;
+  }
+  .margin-footer-extra {
+    height: fit-content;
+    margin-bottom: 18vh;
+  }
+}
+
+
