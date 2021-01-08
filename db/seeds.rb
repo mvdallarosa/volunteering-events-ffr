@@ -16,11 +16,10 @@ User.destroy_all
 # images_serialized = open(url).read
 # images = JSON.parse(images_serialized)
 
-url = 'https://source.unsplash.com/500x500/?face'
-
 puts 'Creating 10 users'
 t_count = 1
 10.times do
+  url = 'https://source.unsplash.com/500x500/?portrait'
   file = URI.open(url)
   user = User.new(
     email: "volunteer#{t_count}@email.com",
