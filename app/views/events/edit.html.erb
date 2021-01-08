@@ -1,6 +1,8 @@
+<div class="margin-footer-extra">
+
 <% if current_user.admin %>
 
-  <div class="event-image-container bigger-event-image-container">
+  <div class="event-image-container bigger-event-image-container mb-4">
     <% if @project.photo.attached? %>
       <%= cl_image_tag @project.photo.key, class: 'blurred-banner' %>
     <% else %>
@@ -25,3 +27,4 @@
 
 <% end %>
 
+</div>

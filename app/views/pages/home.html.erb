@@ -1,15 +1,15 @@
-<div class="banner-homepage d-flex align-items-start mb-4">
+<div class="banner-homepage d-flex align-items-start mb-4" style="background-image: linear-gradient(rgba(6, 44, 78, 0.4), rgba(6, 44, 78, 0.4)), url(<%= asset_path 'colori.jpeg' %>);">
   <div class="container align-items-center d-flex justify-content-between">
     <div>
-      <h1 class='page-title'>Diventa volontario con un click.</h1>
+      <h1 class='homepage-title'>Diventa volontario con un click.</h1>
       <%= link_to 'ESPLORA GLI EVENTI', projects_path, class: "btn btn-light mt-4" %>
     </div>
   </div>
 </div>
-<div class="container pt-2">
+<div class="container">
 
 <% @projects.each do |project| %>
-<h1 class="paragraph-title mt-5 mb-3"> <%= project.name %></h1>
+<h1 class="paragraph-title-border mt-5 mb-4 pb-2"><%= project.name %></h1>
   <div class="grid-container">
     <% project.events.each do |event| %>
     <div class="card event-card">

@@ -1,5 +1,13 @@
 .page-title {
   font-size: 3rem;
+  border-bottom: 4px solid $warning;
+  color: $blue;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+
+.homepage-title {
+  font-size: 3rem;
   color: $blue;
   font-weight: bold;
   margin-bottom: 3rem;
@@ -23,9 +31,39 @@
   font-weight: bold;
 }
 
+.paragraph-title-border {
+  font-size: 30px;
+  color: $blue;
+  font-weight: bold;
+  border-bottom: 3px solid $warning;
+}
+
 .paragraph-title-white {
   font-size: 2rem;
   color: white;
   font-weight: bold;
   line-height: 2rem;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 500px) {
+  .page-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .section-title-blue {
+    font-size: 1.6rem;
+  }
+
+  .paragraph-title {
+    font-size: 1.3rem;
+  }
+
+  .paragraph-title-white {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+  }
 }

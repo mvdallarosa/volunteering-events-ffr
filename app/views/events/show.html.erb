@@ -1,7 +1,8 @@
+<div class="margin-footer-extra">
 <% if current_user.admin %>
-  <div class="event-image-container smaller-event-image-container">
+  <div class="event-image-container smaller-event-image-container mb-4">
     <%= image_tag "sos-spesa", class: 'blurred-banner' %>
-    <div class="event-container">
+    <div class="event-container event-container-smaller">
       <div class="event-info d-flex">
         <% if @event.photo.attached? %>
           <%= cl_image_tag @event.photo.key %>
@@ -78,7 +79,6 @@
   </div>
 </div>
 
-
   <div style="display: none;">
     <%= simple_form_for([@project, @event], :html=> { class: 'close-form' }) do |f| %>
       <%= f.input :closed, input_html: { class: 'close-input' } %>
@@ -86,12 +86,10 @@
     <% end %>
   </div>
 
-
-
 <% else %>
-  <div class="event-image-container">
+  <div class="event-image-container mb-4">
     <%= image_tag "sos-spesa", class: 'blurred-banner' %>
-    <div class="event-container">
+    <div class="event-container event-container-smaller">
       <div class="event-info d-flex">
         <% if @event.photo.attached? %>
           <%= cl_image_tag @event.photo.key %>
@@ -126,5 +124,5 @@
       </div>
     </div>
   </div>
-
 <% end %>
+</div>

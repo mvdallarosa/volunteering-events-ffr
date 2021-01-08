@@ -1,10 +1,10 @@
 <% if current_user.admin %>
 
-  <div class="banner d-flex align-items-end mb-4" style="background-image: linear-gradient(rgba(6, 44, 78, 0.4), rgba(6, 44, 78, 0.4)), url(<%= asset_path 'sos-spesa.png' %>);">
-    <div class="container align-items-center d-flex justify-content-between">
+  <div class="banner d-flex align-items-end mb-4 ">
+    <div class="container-content-banner container align-items-center d-flex justify-content-between">
       <h1 class='page-title'> <%= @project.name.upcase %></h1>
       <%= link_to edit_project_path(@project) do %>
-        <p class="btn btn-primary btn-lg fw-bold"> DETTAGLI PROGETTO </p>
+        <p class="btn btn-light btn-lg fw-bold"> DETTAGLI PROGETTO </p>
       <% end %>
     </div>
   </div>
@@ -37,7 +37,7 @@
 
 <% else %>
   <div class="banner d-flex align-items-end mb-4" style="background-image: linear-gradient(rgba(6, 44, 78, 0.4), rgba(6, 44, 78, 0.4)), url(<%= asset_path 'sos-spesa.png' %>);">
-    <div class="container align-items-center d-flex justify-content-between">
+    <div class="container-content-banner container align-items-center d-flex justify-content-between">
       <h1 class='page-title'> <%= @project.name.upcase %></h1>
       <%= link_to "#" do %>
         <p class="btn btn-primary btn-lg fw-bold"> SCOPRI DI PIU' </p>
