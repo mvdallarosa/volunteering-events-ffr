@@ -1,8 +1,14 @@
+<% if !current_user.admin %>
+
 <div class="event-image-container">
   <%= image_tag "sos-spesa", class: 'blurred-banner' %>
   <div class="event-container">
-    <div class="event-info d-flex small-image">
-      <%= image_tag "sos-spesa"%>
+    <div class="event-info d-flex">
+      <% if @event.photo.attached? %>
+        <%= cl_image_tag @event.photo.key %>
+      <% else %>
+        <%= image_tag "sos-spesa"%>
+      <% end %>
       <div class="p-4">
         <p style="font-weight: bold;"><i class="fas fa-calendar-alt"></i> <%= @event.datetime.strftime("%^a, %e %^b") %></p>
         <p><i class="fas fa-clock"></i> <%= @event.datetime.strftime("%H:%M") %></p>
@@ -16,7 +22,7 @@
         <p><%= @event.project.description == nil ? "n/a" : @event.project.description %></p>
       </div>
       <div class="event-specs p-4">
-        <div class="border border-warning p-3">
+        <div class="orange-box border border-warning p-3">
           <p style="font-weight: bold;">ATTIVITA'</p>
           <p><%= @event.activity == nil ? "n/a" : @event.activity %></p>
           <br>
@@ -28,5 +34,5 @@
   </div>
 </div>
 
-
+<% end %>
 

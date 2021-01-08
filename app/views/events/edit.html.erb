@@ -1,5 +1,3 @@
-<div class="margin-footer-extra">
-
 <% if current_user.admin %>
 
   <div class="event-image-container bigger-event-image-container mb-4">
@@ -11,9 +9,9 @@
     <div class="event-container event-container-form">
       <div class="event-info d-flex high">
         <% if @project.photo.attached? %>
-          <%= cl_image_tag @project.photo.key %>
+          <%= cl_image_tag @project.photo.key, class: 'form-image' %>
         <% else %>
-          <%= image_tag "sos-spesa"%>
+          <%= image_tag "sos-spesa", class: 'form-image'%>
         <% end %>
         <div class="p-4 event-highlights">
           <%= render "form" %>
@@ -27,4 +25,3 @@
 
 <% end %>
 
-</div>
