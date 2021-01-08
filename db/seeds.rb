@@ -37,6 +37,7 @@ puts 'Finished!'
 puts 'Creating 2 admins'
 a_count = 1
 2.times do
+  url = 'https://source.unsplash.com/500x500/?portrait'
   file = URI.open(url)
   user = User.new(
     email: "admin#{a_count}@email.com",
